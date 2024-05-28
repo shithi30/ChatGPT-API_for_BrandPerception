@@ -1,9 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[2]:
-
-
 ## Daraz Comments
 
 # import
@@ -203,9 +200,6 @@ print("Listings in result: " + str(df_acc.shape[0]))
 print("Elapsed time to report (mins): " + str(round((time.time() - start_time) / 60.00, 2)))
 
 
-# In[6]:
-
-
 ## ChatGPT Responses
 
 # certificate: https://community.openai.com/t/ssl-certificate-verify-failed/32442/38
@@ -244,10 +238,6 @@ for r in reviews:
 actions_df['chatgpt_recommendations'] = gpt_actions
 actions_df = actions_df[['brand', 'subpar_reviews', 'chatgpt_recommendations']]
 
-
-# In[7]:
-
-
 ## GSheet
 
 # import
@@ -269,20 +259,12 @@ resultClear = sheet.values().clear(spreadsheetId = SAMPLE_SPREADSHEET_ID, range 
 request = sheet.values().update(spreadsheetId = SAMPLE_SPREADSHEET_ID, range = "'Reviews'!A1", valueInputOption = "USER_ENTERED", body = {"values": [df_acc.columns.values.tolist()] + df_acc.fillna("").values.tolist()}).execute()
 request = sheet.values().update(spreadsheetId = SAMPLE_SPREADSHEET_ID, range = "'Reviews'!P1", valueInputOption = "USER_ENTERED", body = {"values": [actions_df.columns.values.tolist()] + actions_df.fillna("").values.tolist()}).execute()
 
-
-# In[8]:
-
-
 ## Donut Charts
 
 # import
 import matplotlib.pyplot as plt
 from colour import Color
 import numpy
-
-
-# In[9]:
-
 
 ## Donut - Numbers
 
@@ -328,10 +310,6 @@ plt.savefig('review_donut_num.jpeg', bbox_inches='tight', dpi=300)
 # show
 plt.show()
 
-
-# In[10]:
-
-
 ## Donut - Percent
 
 # data
@@ -375,10 +353,6 @@ plt.savefig('review_donut_pct.jpeg', bbox_inches='tight', dpi=300)
 
 # show
 plt.show()
-
-
-# In[13]:
-
 
 ## Auto Email
 
@@ -436,10 +410,3 @@ newmail.Attachments.Add(folder + r"\review_donut_pct.jpeg").PropertyAccessor.Set
 
 # send
 newmail.Send()
-
-
-# In[ ]:
-
-
-
-
