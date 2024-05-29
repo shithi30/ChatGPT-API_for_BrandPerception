@@ -1,9 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[1]:
-
-
 ## import
 import pandas as pd
 from selenium import webdriver
@@ -17,10 +14,6 @@ import time
 import win32com.client
 from pretty_html_table import build_table
 import random
-
-
-# In[2]:
-
 
 ## scrape
 
@@ -127,10 +120,6 @@ for j in range(0, source_count):
 # close window
 driver.close()
 
-
-# In[ ]:
-
-
 ## GSheet
 
 # credentials
@@ -173,10 +162,6 @@ df_acc_pres = duckdb.query(qry).df()
 sheet.values().clear(spreadsheetId=SAMPLE_SPREADSHEET_ID, range='News').execute()
 sheet.values().update(spreadsheetId=SAMPLE_SPREADSHEET_ID, range='News!A1', valueInputOption='USER_ENTERED', body={'values': [df_acc_pres.columns.values.tolist()] + df_acc_pres.fillna('').values.tolist()}).execute()
 
-
-# In[ ]:
-
-
 ## novelty
 
 # new articles
@@ -195,10 +180,6 @@ timing_df['timing'] = timings
 if new_len > 0:
     with pd.ExcelWriter("C:/Users/Shithi.Maitra/Downloads/newspaper_fmcg_scrapings.xlsx") as writer:
         df_acc_pres.to_excel(writer, sheet_name="All Results", index=False)
-
-
-# In[ ]:
-
 
 ## email
 
@@ -257,10 +238,6 @@ newmail.Attachments.Add(filename)
 # send
 if new_len > 0: newmail.Send()
 
-
-# In[ ]:
-
-
 ## MSTeams
 
 # email
@@ -278,18 +255,7 @@ newmail.To = "FMCG News - Auto Monitoring <062c1c6b.Unilever.onmicrosoft.com@eme
 newmail.HTMLbody = new + "<br><br>"
 if new_len > 0: newmail.Send()
 
-
-# In[ ]:
-
-
 ## stats
 display(df_acc_pres.head())
 print("Articles in result: " + str(df_acc_pres.shape[0]))
 print("Elapsed time to report (mins): " + str(round((time.time() - start_time) / 60.00, 2)))
-
-
-# In[ ]:
-
-
-
-
