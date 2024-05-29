@@ -12,7 +12,7 @@ import time
 
 ## client
 start_time = time.time()
-client = serpapi.Client(api_key="8e56eebbced63dac4f882b55f6ec39ed550c537bde65bff6d4abd288ad02fcac")
+client = serpapi.Client(api_key="***") # API key
 
 ## datapoint
 def data_from_result(json, field, subfield):
