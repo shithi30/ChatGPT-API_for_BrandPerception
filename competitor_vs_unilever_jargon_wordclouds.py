@@ -1,9 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[ ]:
-
-
 # import
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -17,13 +14,8 @@ from wordcloud import WordCloud, STOPWORDS
 import time
 import win32com.client
 from pretty_html_table import build_table
-# just in case
 import base64
 import random
-
-
-# In[ ]:
-
 
 ## Chaldal ##
 def scrape_chaldal_process(keywords): 
@@ -186,10 +178,6 @@ def scrape_chaldal(folder):
     # return
     return df_acc
 
-
-# In[ ]:
-
-
 def send_viz(scraped_df, folder):
     
     # summary
@@ -263,20 +251,11 @@ def send_viz(scraped_df, folder):
     # send
     newmail.Send()
 
-
-# In[ ]:
-
-
 # call
 if __name__ == "__main__":
     folder = r"C:\Users\Shithi.Maitra\Unilever Codes\Scraping Scripts\Chaldal Stocks"
     scraped_df = scrape_chaldal(folder)
     send_viz(scraped_df, folder)
 
-
-# In[ ]:
-
-
 # run
 # "C:\Users\Shithi.Maitra\Downloads\chaldal_keywords_multi_process.py"
-
