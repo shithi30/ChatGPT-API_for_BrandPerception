@@ -1,9 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[ ]:
-
-
 ## import
 import serpapi
 import pandas as pd
@@ -13,17 +10,9 @@ from google.oauth2 import service_account
 import win32com.client
 import time
 
-
-# In[ ]:
-
-
 ## client
 start_time = time.time()
 client = serpapi.Client(api_key="8e56eebbced63dac4f882b55f6ec39ed550c537bde65bff6d4abd288ad02fcac")
-
-
-# In[ ]:
-
 
 ## datapoint
 def data_from_result(json, field, subfield):
@@ -31,19 +20,11 @@ def data_from_result(json, field, subfield):
     except: data = None
     return data
 
-
-# In[ ]:
-
-
 # APIs
 results_pmpt = ["FMCG industry when:3d", "eCommerce when:3d"]
 results_fmcg = client.search({"engine": "google_news", "q": results_pmpt[0], "gl": "bd"})
 results_ecom = client.search({"engine": "google_news", "q": results_pmpt[1], "gl": "bd"})
 results_apis = [results_fmcg, results_ecom]
-
-
-# In[ ]:
-
 
 ## decode
 
@@ -66,10 +47,6 @@ for i in range(0, 2):
     news_df_acc = pd.concat([news_df_acc, news_df], ignore_index = True)
     print(str(len(results["news_results"])) + " results parsed.")
 
-
-# In[ ]:
-
-
 ## services
 
 # credentials
@@ -81,10 +58,6 @@ SCOPES = ["https://www.googleapis.com/auth/spreadsheets"]
 creds = service_account.Credentials.from_service_account_file(SERVICE_ACCOUNT_FILE, scopes=SCOPES)
 service = build("sheets", "v4", credentials=creds)
 sheet = service.spreadsheets()
-
-
-# In[ ]:
-
 
 ## ETL
 
@@ -108,10 +81,6 @@ email_df = new_df.head()
 # load
 sheet.values().clear(spreadsheetId=SAMPLE_SPREADSHEET_ID, range="Reports!A1:J").execute()
 sheet.values().update(spreadsheetId=SAMPLE_SPREADSHEET_ID, range="Reports!A1", valueInputOption="USER_ENTERED", body={"values": [pres_df.columns.values.tolist()] + pres_df.fillna("").values.tolist()}).execute()
-
-
-# In[ ]:
-
 
 ## email
 
@@ -142,10 +111,3 @@ newmail.Subject = "FMCG Reports (" + str(new_cnt) + "*)" if new_cnt > 0 else "FM
 if new_cnt > 0: newmail.To = "avra.barua@unilever.com; safa-e.nafee@unilever.com; rafid-al.mahmood@unilever.com; anulekha.chowdhuri2@unilever.com"
 newmail.BCC = "shithi30@outlook.com"
 newmail.Send()
-
-
-# In[ ]:
-
-
-
-
