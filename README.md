@@ -1,7 +1,7 @@
 Using the scripts in this repository, I:
-- Source 3rd party data: e-commerce customer reviews, product descriptions, Google News API, online news portals
-- Integrate ChatGPT API, engineer prompts and analyse bulk reviews to identify key areas of improvement in service
-- Share findings and updates by integrating Google Cloud Service APIs - GSheets, GMail and MS Teams automation
+- Source 3rd party data: e-commerce reviews, product descriptions, Google News API, online news portals
+- Integrate ChatGPT API, engineer prompts and analyse bulk reviews in order to identify service loopholes
+- Share findings and updates by integrating Google Service APIs - GSheets, GMail and MS Teams automation
 
 Tech stack: ```openai``` ```Selenium + bs4``` ```duckdb``` ```googleapiclient``` ```win32com.client```<br>
 
