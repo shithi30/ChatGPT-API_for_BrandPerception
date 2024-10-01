@@ -28,6 +28,8 @@ Tech stack: ```openai``` ```Selenium + bs4``` ```duckdb``` ```googleapiclient```
   <img width="950" alt="ee7" src="https://github.com/shithi30/ChatGPT-API_Unilever_BrandPerception_from_Reviews-News-Descriptions/assets/43873081/9e6c606c-b3c9-4c0e-b48f-ea39fea161d5">
 </p>
 
+*<b>Note:</b> All scraping activities are in compliance with robots.txt guidelines.*
+
 
 
 
