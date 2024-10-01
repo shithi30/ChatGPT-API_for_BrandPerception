@@ -1,5 +1,5 @@
 Using the scripts in this repository, I:
-- Source 3rd party data: E-commerce customer reviews, product descriptions, Google News API, Online news portals
+- Source 3rd party data: e-commerce customer reviews, product descriptions, Google News API, online news portals
 - Integrate ChatGPT API, engineer prompts and analyse bulk reviews to identify key areas of improvement in service
 - Share findings and updates by integrating Google Cloud Service APIs - GSheets, GMail and MS Teams automation
 
